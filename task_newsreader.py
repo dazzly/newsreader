@@ -2,11 +2,14 @@ import re
 import urllib.request
 from bs4 import BeautifulSoup
 
-f = open('C:/Users/USER/田유진/(수업) 자료전산처리방법론/파이썬 과제/과제_2.txt', 'w', encoding='UTF8')
+
 test_url='https://news.v.daum.net/v/20191224150210126'
 html = urllib.request.urlopen(test_url)
-# urlopen(url).read().decode('cp949', 'ignore')
-# print(type(html))
+
+urlname = test_url[-6:-1]
+
+f = open(urlname+'.txt', 'w', encoding='UTF8')
+
 
 bs_object = BeautifulSoup(html.read(), 'html.parser')
 head = bs_object.find('h3',{'class':"tit_view"})
