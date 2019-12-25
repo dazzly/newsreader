@@ -1,4 +1,4 @@
-import task_geturl
+import geturl
 import txt_konlpy
 import re
 import os
@@ -6,6 +6,7 @@ import sys
 import urllib.request
 from bs4 import BeautifulSoup
 
+print("Daum 뉴스에서 '최신 뉴스'의 첫 페이지에 있는 모든 뉴스를 txt 파일로 가져옵니다")
 print('news files', end="")
 result_files = []
 

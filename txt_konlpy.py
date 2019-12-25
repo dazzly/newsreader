@@ -28,7 +28,7 @@ def pos_txt(txt_list):
         f.close()
         rf.close()
         print(' +1', end="")
-    print('pos_txt process done')
+    print('\npos_txt process done')
 
 
 test_list = ['C:/Users/USER/田유진/(수업) 자료전산처리방법론/파이썬 과제/newsreader/20191225/1632_02926',
