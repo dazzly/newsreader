@@ -7,7 +7,7 @@ html = urllib.request.urlopen(url)
 bs_object = BeautifulSoup(html.read(), 'html.parser')
 
 # get main news list
-main = bs_object.find_all('div', {'class':'box_etc'})
+main = bs_object.find_all('div', {'class': 'box_etc'})
 
 # get links of news
 link = []

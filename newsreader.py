@@ -10,13 +10,13 @@ print("Daum 뉴스에서 '최신 뉴스'의 첫 페이지에 있는 모든 뉴�
 print('news files', end="")
 result_files = []
 
-for urls in task_geturl.link:
+for urls in geturl.link:
     url = urls
     html = urllib.request.urlopen(url)
 
     # making file and directory
     dir_name = url.strip('https://news.v.daum.net/v/')
-    dir_name = 'C:/Users/USER/田유진/(수업) 자료전산처리방법론/파이썬 과제/newsreader/' + dir_name[:8]
+    dir_name = 'C:/Users/USER/newsreader/' + dir_name[:8]
     url_name = url[-9:-5] + '_' + url[-5:]
 
     filename = dir_name + '/' + url_name
