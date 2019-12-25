@@ -1,4 +1,5 @@
 import task_geturl
+import txt_konlpy
 import re
 import os
 import sys
@@ -6,6 +7,8 @@ import urllib.request
 from bs4 import BeautifulSoup
 
 print('news files', end="")
+result_files = []
+
 for urls in task_geturl.link:
     url = urls
     html = urllib.request.urlopen(url)
@@ -13,12 +16,13 @@ for urls in task_geturl.link:
     # making file and directory
     dir_name = url.strip('https://news.v.daum.net/v/')
     dir_name = 'C:/Users/USER/田유진/(수업) 자료전산처리방법론/파이썬 과제/newsreader/' + dir_name[:8]
-    url_name = url[-9:]
+    url_name = url[-9:-5] + '_' + url[-5:]
 
-    filename = dir_name + '/' + url_name + '.txt'
+    filename = dir_name + '/' + url_name
     os.makedirs(os.path.dirname(filename), exist_ok=True)
+    result_files.append(filename)
 
-    f = open(filename, 'w', encoding='UTF8')
+    f = open(filename+'.txt', 'w', encoding='UTF8')
 
     # read contents
     bs_object = BeautifulSoup(html.read(), 'html.parser')
@@ -59,4 +63,12 @@ for urls in task_geturl.link:
     print(' +1', end="")
 
 print('\nall process is done')
+n = int(input('각 파일에 대한 형태소 분석을 하시려면 1을, 이대로 종료하려면 0을 입력해주세요: '))
+if n == 1:
+    txt_konlpy.pos_txt(result_files)
+elif n == 0:
+    print('프로그램을 마칩니다.')
+    sys.exit()
+else:
+    print('Invalid input, terminate process')
 sys.exit()
